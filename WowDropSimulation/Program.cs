@@ -550,7 +550,7 @@ namespace WowDropSimulation
                 double amountOfTwoSets = 0;
 
                 double amountOfZeroSets = 0;
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     Player cdw = new Player(frostMage, slots, "cdw");
                     Player bunnys = new Player(unholyDK, slots, "bunnys");
@@ -618,10 +618,10 @@ namespace WowDropSimulation
                 }
                 Console.WriteLine("After week " + numberOfWeeks);
 
-                Console.WriteLine("Number of 4 set: " + amountOfFourSets / 1000);
-                Console.WriteLine("Number of 2 set: "+ amountOfTwoSets / 1000);
+                Console.WriteLine("Number of 4 set: " + amountOfFourSets / 10000);
+                Console.WriteLine("Number of 2 set: "+ amountOfTwoSets / 10000);
 
-                Console.WriteLine("Number of 0 set: " + amountOfZeroSets / 1000);
+                Console.WriteLine("Number of 0 set: " + amountOfZeroSets / 10000);
 
             }
             Console.ReadKey();
@@ -660,12 +660,17 @@ namespace WowDropSimulation
                 }
             }
             Random rng = new Random();
+            int vaultLootNum = 2;
+            if(weekOne)
+            {
+                vaultLootNum = 1;
+            }
             foreach (Player player in players)
             {
                 List<Loot> tempLootList = new List<Loot>(lootList);
                 
                 List<Loot> lootListToChoose = new List<Loot>();
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < vaultLootNum; i++)
                 {
                     int lootRoll = rng.Next(0, lootList.Count);
                     lootListToChoose.Add(lootList[lootRoll]);
