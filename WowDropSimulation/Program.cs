@@ -542,8 +542,8 @@ namespace WowDropSimulation
             Random rng = new Random();
             int normalDropNum = 4;
             int tierDropNum = 2;
-            int numberOfWeeks = 1;
-            for( int n = numberOfWeeks; numberOfWeeks < 8; numberOfWeeks++)
+            int numberOfWeeks = 8;
+            for( int n = 1; n < numberOfWeeks; n++)
             { 
            
                 double amountOfFourSets = 0;
@@ -583,21 +583,14 @@ namespace WowDropSimulation
                     RunSim(0, true);
                     RunSim(13, true);
                     RunVault(0, true);
-                    for (int j = 0; j < numberOfWeeks-1; j++)
+                    for (int j = 0; j < n-1; j++)
                     {
                         RunSim(13, false);
                       
                           RunSim(0, false);
                         
-
-                       
-                        
                         RunVault(13, false);
                     }
-
-                   
-
-                    
 
                     foreach (Player player in players)
                     {
@@ -616,7 +609,7 @@ namespace WowDropSimulation
                     }
 
                 }
-                Console.WriteLine("After week " + numberOfWeeks);
+                Console.WriteLine("After week " + n);
 
                 Console.WriteLine("Number of 4 set: " + amountOfFourSets / 10000);
                 Console.WriteLine("Number of 2 set: "+ amountOfTwoSets / 10000);
